@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
 public class OmniCarouselView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
     public enum Content {
@@ -14,6 +15,9 @@ public class OmniCarouselView: UIView, UICollectionViewDataSource, UICollectionV
         case Image(UIImage)
         case View(UIView)
     }
+    
+    // Allow subscription to the selected item changing as the user scrolls.
+    public let selectedContentIndex = MutableProperty<Int>(0)
     
     // use infinite loop
     @IBInspectable var infinite: Bool = false
@@ -177,5 +181,8 @@ public class OmniCarouselView: UIView, UICollectionViewDataSource, UICollectionV
         } else {
             pagerView?.current = page
         }
+        
+        // Publish the change in selected item
+        selectedContentIndex.value = pagerView?.current ?? 0
     }
 }

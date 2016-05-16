@@ -37,6 +37,19 @@ let labels = Array(0..<3).map { (i) -> UILabel in
 carouselView3.contents = labels.map({OmniCarouselView.Content.View($0)})
 ```
 
+### Subscribe to changes in the selected Content item
+
+As the user swipes to change between Content items, a reactive property allows View Model bindings.
+
+```swift
+// Watch the currently selected scenario item change.
+carousel.selectedContentIndex.signal.skipRepeats().observe { event in
+    
+    guard let itemIndex = event.value else { return }
+    self.selectedScenario = scenarioItems[itemIndex]
+}
+```
+
 ## Installation
 
 OmniCarouselView is available through [CocoaPods](http://cocoapods.org). To install

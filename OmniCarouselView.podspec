@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "OmniCarouselView"
-  s.version          = "0.1.0"
+  s.version          = "0.1.1"
   s.summary          = "Carousel view that can contain UIImage, image url or any view"
 
 # This description is used to generate tags and improve search results.
@@ -47,4 +47,5 @@ It can customize
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'AlamofireImage', '~> 2.0'
+  s.dependency 'ReactiveCocoa', '~> 4.1'
 end
